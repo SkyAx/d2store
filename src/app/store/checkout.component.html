@@ -1,0 +1,68 @@
+<div class="container install mt-5">
+  <div class="row navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">
+      <span class="text-danger font-weight-bold">D2</span> store
+    </a>
+  </div>
+  <div class="row bg-dark text-white p-3">
+    <div *ngIf="orderSent" class="m-1 text-center col-12">
+      <h2 class="text-center font-weight-bold">Спасибо!</h2>
+      <p class="text-center">Благодарим за покупку! Веселой игры!</p>
+      <button class="btn btn-primary" routerLink="/store">Вернуться в магазин</button>
+    </div>
+    <form *ngIf="!orderSent" #form="ngForm" novalidate (ngSubmit)="submitOrder(form)" class="m-1 row">
+      <div class="form-group col-12">
+        <label>Имя</label>
+        <input class="form-control" #name="ngModel" name="name"
+               [(ngModel)]="order.name" required />
+        <span *ngIf="submitted && name.invalid" class="text-danger">
+          Пожалуйста, введите свое имя
+        </span>
+      </div>
+      <div class="form-group col-12">
+        <label>Адрес</label>
+        <input class="form-control" #address="ngModel" name="address"
+               [(ngModel)]="order.address" required />
+        <span *ngIf="submitted && address.invalid" class="text-danger">
+          Пожалуйста, введите свой адрес
+        </span>
+      </div>
+      <div class="form-group col-12">
+        <label>Город</label>
+        <input class="form-control" #city="ngModel" name="city"
+               [(ngModel)]="order.city" required />
+        <span *ngIf="submitted && city.invalid" class="text-danger">
+          Пожалуйста, введите свой город
+        </span>
+      </div>
+      <div class="form-group col-12">
+        <label>Область</label>
+        <input class="form-control" #state="ngModel" name="state"
+               [(ngModel)]="order.state" required />
+        <span *ngIf="submitted && state.invalid" class="text-danger">
+          Пожалуйста, введите свою область
+        </span>
+      </div>
+      <div class="form-group col-12">
+        <label>Индекс</label>
+        <input class="form-control" #zip="ngModel" name="zip"
+               [(ngModel)]="order.zip" required />
+        <span *ngIf="submitted && zip.invalid" class="text-danger">
+          Пожалуйста, введите свой индекс
+        </span>
+      </div>
+      <div class="form-group col-12">
+        <label>Страна</label>
+        <input class="form-control" #country="ngModel" name="country"
+               [(ngModel)]="order.country" required />
+        <span *ngIf="submitted && country.invalid" class="text-danger">
+          Пожалуйста, укажите свою страну
+        </span>
+      </div>
+      <div class="text-center col-12">
+        <button class="btn btn-secondary" routerLink="/cart">Назад</button>
+        <button class="btn btn-primary" type="submit">Оформить заказ</button>
+      </div>
+    </form>
+  </div>
+</div>

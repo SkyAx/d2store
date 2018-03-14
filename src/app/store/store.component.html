@@ -1,0 +1,55 @@
+<div class="install container">
+  <div class="row navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">
+      <span class="text-danger font-weight-bold">D2</span> store
+    </a>
+    <cart-summary></cart-summary>
+  </div>
+  <div class="row main">
+    <div class="col-3 pl-2 pr-2 bg-dark main-menu">
+      <div class="mb-4">
+        <button class="btn btn-block btn-primary" (click)="changeCategory()">
+          Главная
+        </button>
+        <button class="btn btn-block btn-danger m-t-3" routerLink="/admin">
+          Войти
+        </button>
+      </div>
+      <button *ngFor="let cat of categories" class="btn btn btn-outline-light btn-block" [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
+        {{cat}}
+      </button>
+    </div>
+    <div class="col-9 bg-secondary p-2 text-white main-list">
+      <div *ngFor="let product of products" class="card bg-dark text-white mb-2">
+        <h5 class="card-header align-middle">
+          {{product.name}}
+          <span class="float-right">
+            {{product.price | currency:"USD":true:"2.2-2"}}
+          </span>
+        </h5>
+        <div class="card-text p-3">
+          <img class="product-image rounded float-left" src={{product.image}}>
+          <div class="align-self-center">
+            <p>
+              {{product.description}}
+            </p>
+            <button class="btn btn-success btn-sm float-left" (click)="addProductToCart(product)">Добавить в корзину</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-dark p-4">
+    <div class="form-inline mr-1 offset-3">
+      <select class="form-control" [value]="productsPerPage" (change)="changePageSize($event.target.value)" title="Страницы">
+        <option value="3">3 per Page</option>
+        <option value="4">4 per Page</option>
+        <option value="6">6 per Page</option>
+        <option value="8">8 per Page</option>
+      </select>
+    </div>
+    <div class="btn-group offset-1">
+      <button *counter="let page of pageCount" (click)="changePage(page)" class="btn btn-outline-light" [class.active]="page == selectedPage">{{page}}</button>
+    </div>
+  </div>
+</div>

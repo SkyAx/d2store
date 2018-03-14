@@ -1,0 +1,23 @@
+<div class="install container bg-dark text-white">
+  <div class="row navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">
+      <span class="text-danger font-weight-bold">D2</span> store admin
+    </a>
+  </div>
+  <div class="mt-1 row">
+    <div class="col-3">
+       <button class="btn btn-outline-light btn-block" routerLink="/admin/main/products" routerLinkActive="active">
+         Продукты
+       </button>
+       <button class="btn btn-outline-light btn-block" routerLink="/admin/main/orders" routerLinkActive="active">
+         Заказы
+       </button>
+       <button class="btn btn-outline-danger btn-block mt-5 mb-3" (click)="logout()">
+         Выйти
+       </button>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

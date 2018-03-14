@@ -1,0 +1,15 @@
+<div class="float-right">
+  <small class="text-white">
+    Корзина:
+    <span *ngIf="cart.itemCount > 0">
+      {{cart.itemCount}} предмет(а)
+      {{cart.cartPrice | currency:"USD":true:"2.2-2"}}
+    </span>
+    <span *ngIf="cart.itemCount == 0">
+      (пустая)
+    </span>
+  </small>
+  <button class="btn btn-sm btn-outline-light" [disabled]="cart.itemCount == 0" routerLink="/cart">
+    <i class="fa fa-shopping-cart"></i> Оплатить
+  </button>
+</div>

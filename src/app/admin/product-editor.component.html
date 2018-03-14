@@ -1,0 +1,34 @@
+<div class="p-1 text-white">
+<h3>{{editing  ? "Редактировать" : "Создать"}} продукт</h3>
+</div>
+  <form novalidate #form="ngForm" (ngSubmit)="save(form)" >
+    <div class="form-group">
+      <label>Имя</label>
+      <input class="form-control" name="name" [(ngModel)]="product.name" />
+    </div>
+    <div class="form-group">
+      <label>Категория</label>
+      <input class="form-control" name="category" [(ngModel)]="product.category" />
+    </div>
+    <div class="form-group">
+      <label>Описание</label>
+      <textarea class="form-control" name="description" [(ngModel)]="product.description">
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label>Путь к картинке</label>
+    <input class="form-control" name="image" [(ngModel)]="product.image" placeholder="/assets/images/items/image.png"/>
+  </div>
+  <div class="form-group">
+    <label>Цена</label>
+    <input class="form-control" name="price" [(ngModel)]="product.price" />
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary" [class.btn-warning]="editing">
+      {{editing ? "Сохранить" : "Создать"}}
+    </button>
+    <button type="reset" class="btn btn-secondary" routerLink="/admin/main/products">
+      Назад
+    </button>
+  </div>
+</form>
